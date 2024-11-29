@@ -1,0 +1,76 @@
+```
+backend/
+├── app/
+│   ├── api/
+│   │   ├── v1/
+│   │   │   ├── issues.py
+│   │   │   ├── users.py
+│   │   │   ├── auth.py
+│   │   │   ├── whistleblower.py
+│   │   │   ├── forum.py
+│   │   │   └── dashboard.py
+│   ├── core/
+│   │   ├── config.py
+│   │   ├── security.py
+│   │   └── errors.py
+│   ├── db/
+│   │   ├── session.py
+│   │   └── base.py
+│   ├── models/
+│   │   ├── issue.py
+│   │   ├── user.py
+│   │   ├── forum.py
+│   │   ├── whistleblower.py
+│   │   └── base.py
+│   ├── schemas/
+│   │   ├── issue.py
+│   │   ├── user.py
+│   │   ├── forum.py
+│   │   └── whistleblower.py
+│   └── services/
+│       ├── issue.py
+│       ├── email.py
+│       ├── storage.py
+│       └── analytics.py
+├── tests/
+├── alembic/
+├── requirements.txt
+└── main.py
+```
+
+REST API Endpoints:
+```
+AUTH
+POST   /api/v1/auth/register
+POST   /api/v1/auth/login
+POST   /api/v1/auth/refresh
+POST   /api/v1/auth/forgot-password
+POST   /api/v1/auth/reset-password
+
+ISSUES
+GET    /api/v1/issues
+POST   /api/v1/issues
+GET    /api/v1/issues/{id}
+PUT    /api/v1/issues/{id}
+PATCH  /api/v1/issues/{id}/status
+POST   /api/v1/issues/{id}/comments
+GET    /api/v1/issues/stats
+
+FORUM
+GET    /api/v1/forum/threads
+POST   /api/v1/forum/threads
+GET    /api/v1/forum/threads/{id}
+POST   /api/v1/forum/threads/{id}/comments
+POST   /api/v1/forum/threads/{id}/vote
+GET    /api/v1/forum/events
+POST   /api/v1/forum/events
+
+WHISTLEBLOWER
+POST   /api/v1/whistleblower/reports
+GET    /api/v1/whistleblower/reports/{tracking_id}
+
+DASHBOARD
+GET    /api/v1/dashboard/stats
+GET    /api/v1/dashboard/heatmap
+GET    /api/v1/dashboard/trends
+```
