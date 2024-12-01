@@ -12,8 +12,8 @@ from icecream import ic
 
 # ic.disable()
 router = APIRouter(
-    prefix="/users",
-    tags=["Users"],
+    prefix="/user",
+    tags=["User"],
     responses={404: {"description": "Not found"}},
 )
 

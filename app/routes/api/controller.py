@@ -12,7 +12,7 @@ async def tuck_issue_user(user_id: int, issue: str, status: enum, db: Session):
 
 
 def get_user_issue_list(user_id: int, db: Session):
-    issues = db.query(Issues.id, Issues.issue, Issues.created_at).filter(user_id == user_id).all()
+    issues = db.query(Issues.id, Issues.issue, Issues.created_at).filter(Issues.user_id == user_id).all()
 
     if not issues:
         raise HTTPException(
@@ -23,7 +23,7 @@ def get_user_issue_list(user_id: int, db: Session):
 
 
 def get_issue_by_user(user_id: int, issue_id: int,  db: Session):
-    issue = db.query(Issues.id, Issues.issue, Issues.created_at).filter(user_id == user_id, Issues.id == issue_id).first()
+    issue = db.query(Issues.id, Issues.issue, Issues.created_at).filter(Issues.user_id == user_id, Issues.id == issue_id).first()
 
     if not issue:
         raise HTTPException(
