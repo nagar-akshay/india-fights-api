@@ -1,3 +1,4 @@
+import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import RedirectResponse
@@ -7,6 +8,7 @@ from app.routes.auth.main import router as auth_router
 from app.routes.users.main import router as user_router
 from app.routes.api.main import router as api_router
 from app.config.config import APP_NAME, VERSION
+from app.routes.myneta.controller import router as neta_router
 
 app = FastAPI(
     title=APP_NAME,
@@ -30,6 +32,7 @@ def on_startup():
 app.include_router(auth_router, prefix='/api/v1.0')
 app.include_router(user_router, prefix='/api/v1.0')
 app.include_router(api_router, prefix='/api/v1.0')
+app.include_router(neta_router, prefix='/myneta/api/v1.0')
 # # ----------------------------------------
 
 
@@ -52,3 +55,6 @@ def forward_to_login():
     to token-generation (`/auth/token`). Used to make Auth in Swagger-UI work.
     """
     return RedirectResponse(url="/api/v1/auth/token")
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
