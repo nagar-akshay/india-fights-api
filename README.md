@@ -4,7 +4,7 @@
 -	Python
 ## Instructions
 - Create new virtualenv `python -m venv ./venv`
-- Activate venv `source venv/bin/activate` (if Linux). `venv\Scripts\activate.bat` if windows. Mac Idk
+- Activate venv `source venv/bin/activate` (if Linux/Mac). `venv\Scripts\activate.bat` if windows. 
 - Start a simple mariadb instance using docker `docker run --name my-mariadb -e MYSQL_ROOT_PASSWORD=admin123 -p 3306:3306 -d mariadb:latest
 `
 - Create ifapi DB `docker exec -it my-mariadb mariadb -u root -p -e "CREATE DATABASE ifapi;"`
