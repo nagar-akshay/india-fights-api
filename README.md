@@ -10,4 +10,4 @@
 - Create ifapi DB `docker exec -it my-mariadb mariadb -u root -p -e "CREATE DATABASE ifapi;"`
 - Install all project requirements `pip install -r requirements.txt`
 - Start fastapi server `uvicorn main:app --reload` (change port using --port argument)
-- Head over `http://localhost:8000/docs` to check API documentation 
+- Head over `http://localhost:8000/docs` (port 8000 is default, incase you have provided different port use that one) to check API documentation 
