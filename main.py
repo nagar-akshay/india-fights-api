@@ -8,6 +8,7 @@ from app.routes.users.main import router as user_router
 from app.routes.api.main import router as api_router
 from app.config.config import APP_NAME, VERSION
 
+
 app = FastAPI(
     title=APP_NAME,
     version=VERSION,
