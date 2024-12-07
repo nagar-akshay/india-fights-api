@@ -1,16 +1,13 @@
 from fastapi import APIRouter, Depends, HTTPException
-from fastapi.encoders import jsonable_encoder
 from sqlalchemy.orm import Session
-from starlette.responses import JSONResponse
 
 from app.routes.auth.controller import get_current_active_user, get_password_hash
-from app.routes.users.controller import get_users_admin, get_user_by_id
+from app.routes.users.controller import get_user_by_id
 from app.util.db_dependency import get_db
 from app.routes.users.models import User
 from app.routes.users.schemas import CreateUser, GetUser
-from icecream import ic
 
-# ic.disable()
+
 router = APIRouter(
     prefix="/user",
     tags=["User"],
@@ -34,7 +31,6 @@ async def get_user(user: User = Depends(get_current_active_user), db: Session = 
 
 @router.post("/register")
 def register_user(user: CreateUser, session: Session = Depends(get_db)):
-    ic(CreateUser)
     existing_user = session.query(User).filter_by(email=user.email).first()
     if existing_user:
         raise HTTPException(status_code=400, detail="Email already registered")

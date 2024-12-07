@@ -9,8 +9,7 @@ from app.routes.api.schemas import PostIssueSchema, GetIssue
 from app.routes.auth.controller import get_current_active_user
 from app.routes.users.models import User
 from app.util.db_dependency import get_db
-from icecream import ic
-# ic.disable()
+
 
 router = APIRouter(
     tags=["Issues"],
